@@ -1,0 +1,131 @@
+﻿#computer network-Assignment
+
+
+1) What is the major difference between the http and https protocol?
+
+
+=>
+Feature
+	HTTP (HyperText Transfer Protocol)
+	HTTPS (HyperText Transfer Protocol Secure)
+	Security
+	Data is sent in "Plain Text."
+	Data is encrypted (scrambled).
+	Port
+	Uses Port 80.
+	Uses Port 443.
+	Privacy
+	Vulnerable to "Man-in-the-Middle" attacks.
+	Protects against eavesdropping.
+	Trust
+	No identity verification.
+	Requires an SSL/TLS Certificate.
+	SEO
+	No benefit.
+	Google gives higher rankings to HTTPS sites.
+	
+
+
+
+
+
+
+
+2) What are the layers where this http and https protocols work?
+
+
+=> they work at layer 7 in the osi model that is the application layer
+
+
+3) Describe the osi model of data flow?
+1. Layer 7: Application (The Interface)
+* What happens: This is where you interact with the computer. You type a message in a browser (HTTPS) or an email client.
+* Data form: Data.
+2. Layer 6: Presentation (The Translator)
+* What happens: The computer translates the data into a format the network understands. It handles encryption (like the "S" in HTTPS) and compression.
+* Data form: Data.
+3. Layer 5: Session (The Manager)
+* What happens: It opens a "session" or a conversation between your device and the server. It’s like a phone call—it makes sure the connection stays open while you talk.
+* Data form: Data.
+4. Layer 4: Transport (The Logistics)
+* What happens: This layer decides how to send the data (TCP for reliability or UDP for speed). It breaks the big data into smaller pieces.
+* Data form: Segments.
+5. Layer 3: Network (The Post Office)
+* What happens: It looks at the destination IP Address and decides the best path across the internet to get there (Routing).
+* Data form: Packets.
+6. Layer 2: Data Link (The Delivery Truck)
+* What happens: It prepares the packet for the physical wire/Wi-Fi. It adds the hardware address (MAC Address) of the next "hop" (like your router).
+* Data form: Frames.
+7. Layer 1: Physical (The Wire)
+* What happens: The frames are converted into electrical pulses, light flashes, or radio waves and sent across the cable or through the air.
+* Data form: Bits (1s and 0s).
+4) What is the difference between the TCP and UDP protocol?
+
+
+Feature
+	TCP
+	UDP
+	Reliability
+	Guaranteed. Data arrives intact.
+	Unreliable. Data might be lost.
+	Speed
+	Slower (due to checking).
+	Much Faster (no checking).
+	Order
+	Arrives in the exact order sent.
+	Can arrive in any order.
+	Connection
+	Connection-oriented (Handshake).
+	Connectionless (No Handshake).
+	Common Use
+	Web Browsing (HTTPS), Email, Files.
+	Gaming, Video Calls, Streaming.
+	
+
+5) how can one decide which protocol to use ?
+* Use TCP when you need 100% accuracy. If you are downloading a program or a bank statement, even one missing bit could corrupt the entire file or change your bank balance. You don't mind waiting an extra second for the "check-up."
+* Use UDP when you need real-time speed. If you are on a Zoom call or playing Call of Duty, and one packet is lost, you get a tiny "glitch" or a pixelated face for a split second. That is much better than the whole call pausing for 5 seconds while the computer tries to re-download a single missing frame. In live situations, old data is useless data.
+ 6) write the basic connecting networking commands operate at      
+     layer-3?
+ping: The most basic test. It sends a tiny packet to an IP address to see if it’s alive and   how long the "round trip" takes.
+Example: ping google.com
+traceroute(Linux) / tracert (Windows): Shows you every router (hop) your data passes through to reach a destination. Great for seeing exactly where a connection is failing.
+Example: traceroute google.com
+
+
+
+
+
+
+
+
+
+
+7) What are the commands which give the info about the ports and connection?
+
+
+  => netstat -tunlp: A classic command to see every active connection.
+* -t: TCP connections
+* -u: UDP connections
+* -n: Show numbers (IPs) instead of names
+* -l: Show "listening" ports (apps waiting for data)
+* -p: Show which program is using the port
+
+
+8) What are the dns troubleshooting commands in linux ?
+
+
+* dig: The professional way to look up DNS records. It tells you exactly what the "Address Book" of the internet says about a domain.
+   * Example: dig google.com
+
+
+* nslookup: A simpler, older tool to find the IP address of a domain name.
+
+
+ 9) what are the commands used for getting all the network  
+    Interfaces?
+
+
+* ip addr (Modern Linux) / ifconfig (Old Linux): Shows your IP address, MAC address, and whether your network card is actually "Up."
+* ip link: Focuses specifically on the physical/hardware status of your network cards.
+* ip neigh / arp -a: Shows the ARP Table  (the list of local neighbors and their MAC addresses).
