@@ -10,7 +10,7 @@ debug=false
 while [[ $# -gt 0 ]]; do
     case "$1" in
         -o)
-            operation="$2"
+            operation="$2"  
             shift 2
             ;;
         -n)
