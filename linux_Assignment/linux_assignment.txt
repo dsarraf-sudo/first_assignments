@@ -1,0 +1,95 @@
+﻿1) storage related commands like how much the system is consuming, how much space is free and what are the processes that have taken the most space?
+=> df -h
+          Filesystem      Size  Used Avail Use% Mounted on
+          /dev/sda1        50G   20G   28G  42% /
+          tmpf          3.8G     0  3.8G   0% /dev/shm
+ => top
+      -it will display all the processes running currently along with the memory      
+         and cpu consumption
+
+
+2) fetch out the directories which is having only the read and execute permissions ?
+
+
+=> find  /home/diwas   -type d  -perm  /u+rx,g+rx,o+rx  
+     find   /home/diwas  -type d  -perm   555
+
+
+3)how to list down all processes ?how to kill the force normally as well as forcefully?
+=>ps aux 
+   -to list down all the processes of all the users running including  the one 
+    running without terminal
+=> kill pid
+               -to kill the process gracefully 
+=> kill -9 pid
+                -to forcefully kill the processes
+
+
+
+
+4)how to run the process in background?
+=> python scripy.py &
+                               - using & sign at the last of the command we can run processes in the         
+                                 the background here also this python script will run in the background 
+
+
+5)how to bring back a process from background to foreground?
+    => bg %jobnumber
+
+
+6)how to search for the error files among all the log files ?
+
+
+   =>grep -r “error” /var/log 
+           -it will search recursively inside the log directory for all the error files
+
+
+
+
+7) how to search for  some pattern in a file  and replace it with some other pattern?
+=> sed -i 's/error/warning/gi' app.log
+ -it will edit the file in place and basically substitute error with warning      wherever it appears in the file 
+
+
+
+
+8)how to create  logical volume out of some physical volume and create some filesystem out of that and mount it somewhere in the virtual directory?
+     
+
+
+=> Disk → Physical Volume → Volume Group → Logical Volume → Filesystem → Directory
+
+
+      Step 1: Identify available disks
+       Command - lsblk
+     
+     
+     Step 2: Create Physical Volume (PV)
+      Command -pvcreate /dev/sdb
+   
+     Step 3: Create Volume Group (VG)
+      command-vgcreate my_vg /dev/sdb
+
+
+     Step 4: Create Logical Volume (LV)
+       command-lvcreate -L 5G -n my_lv my_vg
+
+
+     Step 5: Create filesystem on the Logical Volume
+       command-mkfs.ext4 /dev/my_vg/my_lv
+
+
+    Step 6: Create a directory (mount point)
+       command-mkdir /mnt/mydata
+
+
+    Step 7: Mount the filesystem
+       command-mount /dev/my_vg/my_lv /mnt/mydata
+
+
+
+
+9)how to unmount the filesystem ??
+
+
+=> command - umount   /dev/my_vg/my_lv
