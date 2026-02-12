@@ -45,7 +45,7 @@ if [ ${#numbers[@]} -eq 0 ]; then
     exit 1
 fi
 
-result=${numbers[0]}
+result=${numbers[0]}  
 
 for (( i=1; i<${#numbers[@]}; i++ )); do
     current=${numbers[$i]}
